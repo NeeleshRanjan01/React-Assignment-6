@@ -7,7 +7,8 @@ import { useState, useContext } from "react";
 const AddStudents = () => {
     const [data] = useContext(store);
     var { path } = useParams();
-    const Filter = data.filter((value) => value.id == path)
+    const pathValue= parseInt(path)
+    const Filter = data.filter((value) => value.id === pathValue)
    
     const [name1, setName] = useState(Filter[0].name);
     const [age1, setAge] = useState(Filter[0].age);
@@ -17,7 +18,7 @@ const AddStudents = () => {
     const back = useNavigate()
 
     var index = data.findIndex(object => {
-        return object.id == path;
+        return object.id === pathValue;
       });
 
     console.log(index)
